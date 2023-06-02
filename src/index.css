@@ -15,3 +15,25 @@
         color: #fff;
     }
 }
+
+
+@layer utilities {
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    @apply bg-very-dark-blue-dark 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    @apply bg-very-light-gray rounded-xl
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+}

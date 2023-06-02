@@ -1,47 +1,29 @@
+import { FlagCardT } from "../api/allFlags"
 
-interface FlagCard {
-    flags:{
-      png:string
-      alt:string
-    }
-    population:string
-    name:{
-      common:string
-    }
-    capital:string[]
-    region:string
-   
-}
-
-interface DetailedRouteFlage {
-    languages:{
-      [key : string] :string
-    }
-    nativeName: {
-			ara: {
-				common: string
-			}
-      region:string
-     capital:string[]
-
-      subregion:string
-      currencies: {
-        [key : string]: {
-          name: string
-          symbol: string
-        }
-      }
-      borders:string[],
-}
-
-
-
-function FlageCard({img,title}:FlagCard) {
-
-
+function FlageCard({ ...props }: FlagCardT) {
+  const { flags, capital, name, population, region } = props
 
   return (
-    <div>Flage</div>
+    <section className="flex cursor-pointer flex-col overflow-hidden rounded-md bg-dark-blue font-nunito shadow-md">
+      <div className="aspect-video">
+        <img className="aspect-video w-full" src={flags.png} alt={flags.alt} />
+      </div>
+      <div className="flex  flex-col gap-2 p-5 text-left">
+        <h2 className="mb-4 text-xl font-bold text-white">{name.common}</h2>
+        <p className="text-very-light-gray">
+          <span className="mr-1 font-semibold text-white">Population:</span>
+          {population}
+        </p>
+        <p className="text-very-light-gray">
+          <span className="mr-1 font-semibold text-white">Region:</span>
+          {region}
+        </p>
+        <p className="text-very-light-gray">
+          <span className="mr-1 font-semibold text-white">Capital:</span>
+          {capital}
+        </p>
+      </div>
+    </section>
   )
 }
 

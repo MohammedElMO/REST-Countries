@@ -6,7 +6,8 @@
     "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "prettier"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -18,5 +19,10 @@
         "react"
     ],
     "rules": {
+        "semi":["warn","never"],
+        "quotes":["warn","always"]
+        
+
+
     }
 }

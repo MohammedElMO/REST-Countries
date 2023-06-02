@@ -1,14 +1,12 @@
 import { Menu } from "@headlessui/react"
-import { Fragment, useState } from "react"
+import { Fragment, useContext, useState } from "react"
 import {BiChevronDown} from "react-icons/bi"
 
 
 function DropDown() {
     const [SelectedRegion, setSelectedRegion] = useState("")
-    const [disabledRegion, setDisabledRegion] = useState(false)
-    
     const regions = ["africa" , "America","Asia" ,"Europ","Ocenia"]
-  
+  // const DropContext = useContext<string[]>([] as any)
     return (
     <div className="relative flex flex-col font-nunito m-10">
         <Menu as={Fragment} >
@@ -35,8 +33,6 @@ function DropDown() {
           </Menu.Item>
                 ))
             }      
-
-
         </Menu.Items>
           </Menu>
     </div>
