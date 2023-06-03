@@ -1,0 +1,20 @@
+
+
+
+
+
+/// on this Project what should I applay Next
+
+
+
+
+/// the Ability To search for Flags by name
+
+
+// Applay dark Mode Theme 
+
+// adding the sceleton on the flags Cards while fetching from the restApi
+// UI labrary
+
+
+/// as well as Making the The /flad/:id Route to show more details about the flage

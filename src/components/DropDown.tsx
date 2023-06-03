@@ -1,43 +1,49 @@
 import { Menu } from "@headlessui/react"
-import { Fragment, useContext, useState } from "react"
-import {BiChevronDown} from "react-icons/bi"
+import { Fragment, useState } from "react"
+import { BiChevronDown } from "react-icons/bi"
+import useSelectedDrop from "../hooks/useSearchFlage"
+
+function DropDown({setSelectedRegion,region} :{setSelectedRegion:(region:string) => void,region:string}) {
+  // const [SelectedRegion, setSelectedRegion] = useState("")
+  const regions = ["ALL regions","Africa", "Americas", "Asia", "Europe", "Oceania"]
+
+  // const region = useSelectedDrop(SelectedRegion)
 
 
-function DropDown() {
-    const [SelectedRegion, setSelectedRegion] = useState("")
-    const regions = ["africa" , "America","Asia" ,"Europ","Ocenia"]
-  // const DropContext = useContext<string[]>([] as any)
-    return (
-    <div className="relative flex flex-col font-nunito m-10">
-        <Menu as={Fragment} >
-        <Menu.Button className="bg-dark-blue shadow-md p-4 rounded-md text-white flex items-center gap-3 text-lg">
-           {SelectedRegion || "Filter by Region"}
-        <BiChevronDown className="text-lg font-bold"/>
+  return (
+    <div className="relative m-10 flex flex-col font-nunito">
+      <Menu as={Fragment}>
+        <Menu.Button className="flex items-center gap-3 rounded-md bg-dark-blue p-4 text-lg text-white shadow-md">
+          {region || "Filter by Region"}
+          <BiChevronDown className="text-lg font-bold" />
         </Menu.Button>
-        <Menu.Items  className={" px-4 text-lg w-full absolute top-[100%] mt-1 py-4  p-2 gap-4  rounded-md flex text-white  flex-col bg-dark-blue "}>
-            {
-                regions.map(region => (
-                    <Menu.Item  key={region}>
-                        {({ active,close,disabled}) => (
-              <a
-                onClick={() => {
+        <Menu.Items
+          className={
+            " absolute top-[100%]  overflow-hidden mt-1 flex w-[200%] flex-col gap-4 right-0 max-sm:w-full max-sm:left-0 rounded-md bg-dark-blue  p-2 px-4 py-4  text-lg text-white "
+          }
+        >
+          {regions.map((region) => (
+            <Menu.Item key={region}>
+              {({ active, close, disabled }) => (
+                <a
+                  onClick={() => {
                     close
                     setSelectedRegion(region)
-                }}
-                className={`p-2 rounded ${disabled && "bg-"} ${active && 'bg-very-dark-blue-dark'}`}
-                href="#"
-              >
-                {region}
-              </a>
-            )}
-          </Menu.Item>
-                ))
-            }      
+                  }}
+                  className={`rounded p-2 ${disabled && "bg-"} ${
+                    active && "bg-very-dark-blue-dark"
+                  }`}
+                  href="#"
+                >
+                  {region}
+                </a>
+              )}
+            </Menu.Item>
+          ))}
         </Menu.Items>
-          </Menu>
+      </Menu>
     </div>
-
-    )
+  )
 }
 
 export default DropDown

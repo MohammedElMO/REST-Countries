@@ -9,7 +9,7 @@ function FlageCard({ ...props }: FlagCardT) {
         <img className="aspect-video w-full" src={flags.png} alt={flags.alt} />
       </div>
       <div className="flex  flex-col gap-2 p-5 text-left">
-        <h2 className="mb-4 text-xl font-bold text-white">{name.common}</h2>
+        <h2 className="mb-4 text-center text-2xl font-bold text-white">{name.common}</h2>
         <p className="text-very-light-gray">
           <span className="mr-1 font-semibold text-white">Population:</span>
           {population}

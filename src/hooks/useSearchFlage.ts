@@ -3,26 +3,27 @@ import { useEffect, useState } from "react"
 import { FlagCardT } from "../api/allFlags"
 import axiosApiClient from "../api/axios-apiClient"
 
-const useSelectedDrop = async (region: string) => {
-  const [selectedFlags, setSelectedFlags] = useState<FlagCardT[] | undefined>(
+const useSearchFlage =  (falgeName: string) => {
+  const [searchFlag, setSearchedFlags] = useState<FlagCardT[] | undefined>(
     []
   )
 
   useEffect(() => {
     const fetchSelectedFlags = async () => {
       try {
-        const req = await axiosApiClient.get<FlagCardT[]>(`/region/${region}`)
+        const req = await axiosApiClient.get<FlagCardT[]>(`name/${falgeName}`)
         const data = await req.data
-        setSelectedFlags(data)
+        setSearchedFlags(data)
+        
       } catch (err) {
         if (err instanceof Error) console.log(err)
       }
     }
     fetchSelectedFlags()
-  }, [region])
+  }, [falgeName])
   return {
-    selectedFlags,
+    searchFlag,
   }
 }
 
-export default useSelectedDrop
+export default useSearchFlage
